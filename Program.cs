@@ -1,12 +1,15 @@
 using Ecomerce;
-using Ecomerce.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+builder.Services.AddTransient<ICatalogo, Catalogo>();
 
-var catalogo = new Catalogo();
+var catalogo = app.Services.GetService<ICatalogo>();
 var relatorio = new Relatorio(catalogo);
+
+
 
 app.MapGet("/", relatorio.Imprimir);
 

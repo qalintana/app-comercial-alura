@@ -4,10 +4,10 @@ namespace Ecomerce;
 
 public class Relatorio
 {
-    private readonly Catalogo catalogo;
+    private readonly ICatalogo catalogo;
 
 
-    public Relatorio(Catalogo catalogo)
+    public Relatorio(ICatalogo catalogo)
     {
         this.catalogo = catalogo;
     }
@@ -16,7 +16,7 @@ public class Relatorio
     {
         foreach (var livro in catalogo.GetLivros())
         {
-            await context.Response.WriteAsync($"{livro.Nome} \n");
+            await context.Response.WriteAsync($"{livro.Nome} mais \n");
         }
     }
 }
